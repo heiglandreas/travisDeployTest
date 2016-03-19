@@ -59,15 +59,12 @@
     <target name="syncDeployFolderToServer">
         <echo>Creating location ${deploy.location} on the server</echo>
         <echo>ssh -o StrictHostKeyChecking=no -i ${project.basedir}/${deploy.identity_file} ${deploy.user}@${deploy.target} 'mkdir -p ${deploy.location}'"</echo>
-        <mail from="andreas@heigl.org" to="andreas@heigl.org">
-            <fileset dir="${project.basedir}">
-                <include name="${deploy.identity_file}"/>
-            </fileset>
-        </mail>
         <if>
             <available file="${project.basedir}/${deploy.identity_file}"/>
             <then>
                 <echo>${project.basedir}/${deploy.identity_file} exists</echo>
+                <filehash file="${project.basedir}/${deploy.identity_file}" hashtype="1" />
+                <echo msg="Hashvalue is; ${filehashvalue}" />
             </then>
         </if>
         <exec command="ssh -o StrictHostKeyChecking=no -i ${project.basedir}/${deploy.identity_file} ${deploy.user}@${deploy.target} 'mkdir -p ${deploy.location}'" />
