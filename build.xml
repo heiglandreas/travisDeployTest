@@ -59,6 +59,12 @@
     <target name="syncDeployFolderToServer">
         <echo>Creating location ${deploy.location} on the server</echo>
         <echo>ssh -o StrictHostKeyChecking=no -i ${project.basedir}/${deploy.identity_file} ${deploy.user}@${deploy.target} 'mkdir -p ${deploy.location}'"</echo>
+        <if>
+            <available file="${project.basedir}/${deploy.identity_file}"/>
+            <then>
+                <echo>${project.basedir}/${deploy.identity_file} exists</echo>
+            </then>
+        </if>
         <exec command="ssh -o StrictHostKeyChecking=no -i ${project.basedir}/${deploy.identity_file} ${deploy.user}@${deploy.target} 'mkdir -p ${deploy.location}'" />
         <echo>Synching files to target ${deploy.target}</echo>
         <filesync destinationDir="${deploy.user}@${deploy.target}:${deploy.location}"
