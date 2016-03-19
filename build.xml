@@ -58,7 +58,7 @@
 
     <target name="syncDeployFolderToServer">
         <echo>Creating location ${deploy.location} on the server</echo>
-        <exec command="ssh -o StrictHostKeyChecking=no -i ${deploy.identity_file} ${deploy.user}@${deploy.target} 'mkdir -p ${deploy.location}'" />
+        <exec command="ssh -o StrictHostKeyChecking=no -i ${project.basedir}/${deploy.identity_file} ${deploy.user}@${deploy.target} 'mkdir -p ${deploy.location}'" />
         <echo>Synching files to target ${deploy.target}</echo>
         <filesync destinationDir="${deploy.user}@${deploy.target}:${deploy.location}"
                   rsyncPath="${deploy.path_to_rsync}"

@@ -23,7 +23,7 @@ before_install:
 
 - travis_retry composer install --no-interaction --ignore-platform-reqs
 script:
-- phing build
+- ./vendor/bin/phing build
 after_script:
 - if [ $TRAVIS_BRANCH == "master" ] && [ $EXECUTE_TEST_COVERALLS == 'true' ] ; then
   ./vendor/bin/phing deploy; fi
