@@ -1,0 +1,15 @@
+{
+    "name": "org_heigl/travis_deploy_test",
+    "description": "Test RSync-Deployments",
+    "require-dev": {
+        "phing/phing": "^2.14"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Heigl",
+            "email": "andreas@heigl.org"
+        }
+    ],
+    "require": {}
+}

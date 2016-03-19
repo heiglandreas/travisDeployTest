@@ -21,6 +21,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_aeb1b6d07a37_key -iv $encrypted_aeb1b6d07a37_iv
   -in deploy-key.enc -out deploy-key -d
 
+- travis_retry composer install --no-interaction --ignore-platform-reqs
 script:
 - phing build
 after_script:
